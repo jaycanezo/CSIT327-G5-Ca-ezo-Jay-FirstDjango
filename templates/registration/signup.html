@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}CampusConnect - Sign Up{% endblock %}
+
+{% block content %}
+<section class="auth-card card shadow-sm">
+    <div class="auth-heading">
+        <p class="eyebrow">JOIN THE CAMPUSCONNECT COMMUNITY</p>
+        <h1>Create your account</h1>
+        <p>Set up your profile to connect with your campus community.</p>
+    </div>
+
+    <form class="auth-form" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="primary-button btn btn-success" type="submit">Create account</button>
+    </form>
+
+    <p class="auth-footer">Already have an account? <a href="{% url 'login' %}">Log in</a></p>
+</section>
+{% endblock %}

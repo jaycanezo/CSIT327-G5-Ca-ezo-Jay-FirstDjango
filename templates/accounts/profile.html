@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}CampusConnect - Edit Profile{% endblock %}
+
+{% block content %}
+<section class="auth-card card shadow-sm">
+    <div class="auth-heading">
+        <p class="eyebrow">YOUR ACCOUNT</p>
+        <h1>Edit your profile</h1>
+        <p>Update your contact and campus details below.</p>
+    </div>
+
+    <form class="auth-form" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="profile-actions">
+            <button class="primary-button btn btn-success" type="submit">Save changes</button>
+            <a class="cancel-link" href="{% url 'dashboard' %}">Cancel</a>
+        </div>
+    </form>
+</section>
+{% endblock %}

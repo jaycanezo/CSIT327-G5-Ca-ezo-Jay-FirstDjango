@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}CampusConnect - Signed Out{% endblock %}
+
+{% block content %}
+<section class="auth-card signed-out-card card shadow-sm">
+    <div class="signed-out-mark" aria-hidden="true">✓</div>
+    <p class="eyebrow">SESSION ENDED</p>
+    <h1>You’re signed out</h1>
+    <p class="auth-description">You have safely signed out of CampusConnect. Come back any time.</p>
+    <a class="primary-button button-link btn btn-success" href="{% url 'login' %}">Log in again</a>
+</section>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}CampusConnect - Dashboard{% endblock %}
+
+{% block content %}
+<section class="dashboard">
+    <div class="dashboard-heading">
+        <div>
+            <p class="eyebrow">YOUR CAMPUS AT A GLANCE</p>
+            <h1>Welcome, {{ user.first_name|default:user.username }}!</h1>
+            <p class="last-login">Last login: {{ user.last_login|date:"M d, Y"|default:"First login" }}</p>
+        </div>
+        <span class="welcome-mark" aria-hidden="true">CC</span>
+    </div>
+
+    <div class="summary-cards">
+        <article class="summary-card">
+            <p class="card-label">Role</p>
+            <p class="card-value">{{ user.get_role_display }}</p>
+            <p class="card-detail">CampusConnect member</p>
+        </article>
+        <article class="summary-card">
+            <p class="card-label">Course</p>
+            <p class="card-value">{{ user.course|default:"Not set" }}</p>
+            <p class="card-detail">Your study program</p>
+        </article>
+        <article class="summary-card card">
+            <p class="card-label">Members</p>
+            <p class="card-value">{{ member_count }}</p>
+            <p class="card-detail">Registered community</p>
+        </article>
+    </div>
+
+    <div class="dashboard-actions">
+        <a class="admin-link btn btn-outline-success" href="{% url 'profile' %}">Edit profile</a>
+    {% if is_admin %}
+        <a class="admin-link btn btn-outline-success" href="{% url 'admin_panel' %}">Open admin panel</a>
+        <span class="action-note">Administrators only</span>
+    {% endif %}
+    </div>
+</section>
+{% endblock %}
